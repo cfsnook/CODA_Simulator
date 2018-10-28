@@ -11,8 +11,6 @@
  *******************************************************************************/
 package org.coda.simulator.ui.popup.actions;
 
-import java.util.List;
-
 import org.coda.simulator.ui.windowBuilder.SimulatorView;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
@@ -23,12 +21,8 @@ import org.eclipse.ui.IWorkbenchPart;
 import org.eventb.core.IMachineRoot;
 
 import de.prob.core.Animator;
-import de.prob.core.command.ExecuteOperationCommand;
-import de.prob.core.command.GetCurrentStateIdCommand;
-import de.prob.core.command.GetEnabledOperationsCommand;
 import de.prob.core.command.LoadEventBModelCommand;
 import de.prob.core.command.StartAnimationCommand;
-import de.prob.core.domainobjects.Operation;
 import de.prob.exceptions.ProBException;
 import de.prob.ui.PerspectiveFactory;
 
