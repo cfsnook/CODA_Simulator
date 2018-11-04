@@ -13,7 +13,7 @@
 <feature
       id="ac.soton.coda.simulator.feature"
       label="%featureName"
-      version="2.1.2.qualifier"
+      version="2.2.0.qualifier"
       provider-name="%featureVendor"
       plugin="ac.soton.coda.simulator.branding"
       license-feature="ac.soton.coda.licence"
@@ -46,12 +46,12 @@
       <import plugin="org.eventb.core" version="3.0.0" match="compatible"/>
       <import plugin="org.eventb.emf.core" version="5.0.0" match="compatible"/>
       <import plugin="org.eventb.emf.persistence" version="3.0.0" match="compatible"/>
-      <import plugin="ac.soton.eventb.emf.core.extension" version="4.0.0" match="compatible"/>
       <import plugin="ac.soton.eventb.emf.diagrams" version="4.0.0" match="compatible"/>
       <import plugin="ac.soton.eventb.statemachines" version="4.0.0" match="compatible"/>
       <import plugin="ac.soton.eventb.emf.components" version="6.0.0" match="compatible"/>
       <import plugin="ac.soton.eventb.emf.oracle" version="1.0.0" match="compatible"/>
       <import plugin="org.eclipse.ui.forms" version="3.7.1" match="compatible"/>
+      <import plugin="ac.soton.eventb.emf.core.extension" version="5.0.0" match="compatible"/>
    </requires>
 
    <plugin
