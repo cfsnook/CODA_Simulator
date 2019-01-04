@@ -22,7 +22,6 @@ import org.eventb.core.IMachineRoot;
 
 import de.prob.core.Animator;
 import de.prob.core.command.LoadEventBModelCommand;
-import de.prob.core.command.StartAnimationCommand;
 import de.prob.exceptions.ProBException;
 import de.prob.ui.PerspectiveFactory;
 
@@ -62,7 +61,7 @@ public class StartSimAction implements IObjectActionDelegate {
 			try {
 				PerspectiveFactory.openPerspective();	//open the ProB perspective
 				LoadEventBModelCommand.load(animator, machineRoot);
-				StartAnimationCommand.start(animator);
+//				StartAnimationCommand.start(animator);					//this has been removed as it causes a ProB error message
 				animator.getLanguageDependendPart().reload(animator);
 				
 				
