@@ -69,6 +69,8 @@ import de.prob.exceptions.ProBException;
 
 public class OracleHandler {
 	
+	private final static String oracleExtension = "oracle";
+	private final static String goldOracleExtension = "gold_"+oracleExtension;
 	private boolean debug = true;
 
 
@@ -462,7 +464,7 @@ public class OracleHandler {
 	
 	private Run getGoldRun() throws CoreException {
 	   FileDialog dialog = new FileDialog(shell, SWT.OPEN);
-	   dialog.setFilterExtensions(new String [] {"*.gold.oracle"});
+	   dialog.setFilterExtensions(new String [] {"*."+goldOracleExtension, "*."+oracleExtension,"*.*"});
 	   dialog.setFilterPath(oracleFolder.getRawLocation().toString());
 	   dialog.setText("Select Gold Oracle File to Replay");
 	   String rawLocation = dialog.open();
@@ -534,8 +536,8 @@ public class OracleHandler {
 		filePath = filePath.append("/"+EcoreUtil.getURI(model).trimFileExtension().lastSegment());
 		filePath = filePath.addFileExtension(name);
 		filePath = filePath.addFileExtension(timestamp);
-		if (gold) filePath = filePath.addFileExtension("gold");
-		filePath = filePath.addFileExtension("oracle");
+		if (gold) filePath = filePath.addFileExtension(goldOracleExtension);
+		else filePath = filePath.addFileExtension(oracleExtension);
 		IPath path = new Path("platform:/resource");
 		path = path.append(filePath);
 		URI uri = URI.createURI(path.toString(),true);
