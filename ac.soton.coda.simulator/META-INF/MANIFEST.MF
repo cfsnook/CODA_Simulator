@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Localization: plugin
 Bundle-Name: %pluginName
-Bundle-SymbolicName: ac.soton.coda.simulator.ui;singleton:=true
+Bundle-SymbolicName: ac.soton.coda.simulator;singleton:=true
 Bundle-Version: 3.0.0.qualifier
 Bundle-Activator: ac.soton.coda.simulator.Activator
 Bundle-Vendor: %providerName
