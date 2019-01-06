@@ -9,7 +9,7 @@
  * Contributors:
  *      University of Southampton - Initial API and implementation
  *******************************************************************************/
-package org.coda.simulator.animation.impl;
+package ac.soton.coda.internal.simulator;
 
 import java.awt.*;
 import java.awt.event.*;

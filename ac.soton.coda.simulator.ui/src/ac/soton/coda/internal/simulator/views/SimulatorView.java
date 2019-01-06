@@ -9,7 +9,7 @@
  * Contributors:
  *      University of Southampton - Initial API and implementation
  *******************************************************************************/
-package org.coda.simulator.ui.windowBuilder;
+package ac.soton.coda.internal.simulator.views;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,10 +17,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-import org.coda.simulator.animation.impl.OracleHandler;
-import org.coda.simulator.animation.impl.UpdateEnabledOpsList;
-import org.coda.simulator.animation.impl.UpdateStateLists;
-import org.coda.simulator.ui.SimulatorException;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
@@ -61,6 +57,10 @@ import org.eventb.emf.persistence.factory.RodinResource;
 import org.rodinp.core.IRodinElement;
 
 import swing2swt.layout.FlowLayout;
+import ac.soton.coda.internal.simulator.OracleHandler;
+import ac.soton.coda.internal.simulator.UpdateEnabledOpsList;
+import ac.soton.coda.internal.simulator.UpdateStateLists;
+import ac.soton.coda.simulator.SimulatorException;
 import ac.soton.eventb.emf.components.AbstractComponentOperation;
 import ac.soton.eventb.emf.components.Component;
 import ac.soton.eventb.emf.components.External;
@@ -73,6 +73,7 @@ import de.prob.core.domainobjects.State;
 import de.prob.core.domainobjects.Variable;
 import de.prob.exceptions.ProBException;
 import de.prob.ui.StateBasedViewPart;
+
 
 public class SimulatorView extends StateBasedViewPart {
 
@@ -127,7 +128,7 @@ public class SimulatorView extends StateBasedViewPart {
 		getOracle().initialise(machine);	//ensure we start in record mode
 	}
 
-	public static final String ID = "org.coda.simulator.ui.windowBuilder.SimulatorView"; //$NON-NLS-1$
+	public static final String ID = "ac.soton.coda.internal.simulator.views.SimulatorView"; //$NON-NLS-1$
 
 	private final FormToolkit toolkit = new FormToolkit(Display.getCurrent());
 	private Button btnTickN;

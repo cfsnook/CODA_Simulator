@@ -9,7 +9,7 @@
  * Contributors:
  *      University of Southampton - Initial API and implementation
  *******************************************************************************/
-package org.coda.simulator.animation.impl;
+package ac.soton.coda.internal.simulator;
 
 import java.io.IOException;
 import java.util.Calendar;
@@ -19,7 +19,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.coda.simulator.ui.Activator;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -53,6 +52,7 @@ import org.eventb.emf.core.CorePackage;
 import org.eventb.emf.core.EventBNamed;
 import org.eventb.emf.core.EventBObject;
 
+import ac.soton.coda.simulator.Activator;
 import ac.soton.eventb.emf.oracle.Entry;
 import ac.soton.eventb.emf.oracle.Oracle;
 import ac.soton.eventb.emf.oracle.OracleFactory;

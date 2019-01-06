@@ -9,7 +9,7 @@
  * Contributors:
  *      University of Southampton - Initial API and implementation
  *******************************************************************************/
-package org.coda.simulator.ui;
+package ac.soton.coda.simulator;
 
 public class SimulatorException extends Exception {
 

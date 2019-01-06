@@ -9,12 +9,11 @@
  * Contributors:
  *      University of Southampton - Initial API and implementation
  *******************************************************************************/
-package org.coda.simulator.animation.impl;
+package ac.soton.coda.internal.simulator;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.coda.simulator.ui.windowBuilder.SimulatorView;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Table;
@@ -23,6 +22,7 @@ import org.eventb.emf.core.AbstractExtension;
 import org.eventb.emf.core.machine.Event;
 import org.eventb.emf.core.machine.Machine;
 
+import ac.soton.coda.internal.simulator.views.SimulatorView;
 import ac.soton.eventb.emf.components.AbstractComponentOperation;
 import ac.soton.eventb.emf.components.Component;
 import de.prob.core.Animator;
