@@ -12,28 +12,41 @@
  *******************************************************************************/
 package ac.soton.coda.internal.simulator.handlers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.IHandler;
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.IWorkbench;
+import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.WorkbenchException;
 import org.eclipse.ui.handlers.HandlerUtil;
+import org.eclipse.ui.services.ISourceProviderService;
 import org.eventb.core.IEventBRoot;
 import org.eventb.core.IMachineRoot;
 import org.eventb.emf.core.EventBElement;
+import org.eventb.emf.core.machine.Machine;
+import org.eventb.emf.core.machine.MachinePackage;
 import org.rodinp.core.IRodinProject;
 import org.rodinp.core.RodinCore;
 
 import ac.soton.coda.internal.simulator.perspectives.SimPerspective;
 import ac.soton.coda.internal.simulator.views.SimulatorView;
+import ac.soton.eventb.statemachines.Statemachine;
+import ac.soton.eventb.statemachines.animation.DiagramAnimator;
+import ac.soton.eventb.statemachines.diagram.part.StatemachinesDiagramEditor;
 import de.prob.core.Animator;
 import de.prob.core.command.LoadEventBModelCommand;
 import de.prob.exceptions.ProBException;
@@ -77,10 +90,22 @@ public class SimulateHandler extends AbstractHandler implements IHandler {
 			e1.printStackTrace();
 		}
 
+		IWorkbenchWindow activeWorkbenchWindow = HandlerUtil.getActiveWorkbenchWindow(event);
+		
+		List<Statemachine> stateMachines = getOpenStateMachines(activeWorkbenchWindow, mchRoot);
+		List<IFile> bmsFiles = new ArrayList<IFile>();
+		if (stateMachines.size() != 0) {
+			Machine machine = (Machine) stateMachines.get(0).getContaining(MachinePackage.Literals.MACHINE);
+			DiagramAnimator diagramAnimator = DiagramAnimator.getAnimator();
+			try {
+				diagramAnimator.start(machine, stateMachines, mchRoot, bmsFiles);
+			} catch (ProBException e) {
+				e.printStackTrace();
+			}
+		}
+		
 		// Switch to CODA simulation perspective.
 		final IWorkbench workbench = PlatformUI.getWorkbench();
-		IWorkbenchWindow activeWorkbenchWindow = HandlerUtil
-				.getActiveWorkbenchWindow(event);
 		try {
 			workbench.showPerspective(SimPerspective.PERSPECTIVE_ID,
 					activeWorkbenchWindow);
@@ -90,8 +115,42 @@ public class SimulateHandler extends AbstractHandler implements IHandler {
 		return null;
 	}
 
+	/**
+	 * @param mch
+	 * @return
+	 */
+	private List<Statemachine> getOpenStateMachines(
+			IWorkbenchWindow activeWorkbenchWindow, IMachineRoot mchRoot) {
+		List<Statemachine> stateMachines = new ArrayList<Statemachine>();
+		List<StatemachinesDiagramEditor> editors = new ArrayList<StatemachinesDiagramEditor>();
+		// Find all the statemachines of the machine
+		// (these must come from the editors as each editor has a different
+		// local copy)
 
-	public static IEventBRoot getEventBRoot(EventBElement element) {
+		for (IWorkbenchPage page : activeWorkbenchWindow.getPages()) {
+			for (IEditorReference editorRef : page.getEditorReferences()) {
+				IEditorPart editor = editorRef.getEditor(true);
+				if (editor instanceof StatemachinesDiagramEditor) {
+					Statemachine statemachine = (Statemachine) ((StatemachinesDiagramEditor) editor).getDiagram().getElement();
+					if (mchRoot.equals(getEventBRoot(statemachine))) {
+						if (editor.isDirty()) {
+							editor.doSave(new NullProgressMonitor());
+						}
+						stateMachines.add(statemachine);
+
+						// let the editor know that we are animating so that it
+						// doesn't try to save animation artifacts
+						((StatemachinesDiagramEditor) editor).startAnimating();
+						editors.add((StatemachinesDiagramEditor) editor);
+					}
+				}
+			}
+		}
+
+		return stateMachines;
+	}
+
+	private static IEventBRoot getEventBRoot(EventBElement element) {
 		Resource resource = element.eResource();
 		if (resource != null && resource.isLoaded()) {
 			IFile file = WorkspaceSynchronizer.getFile(resource);
