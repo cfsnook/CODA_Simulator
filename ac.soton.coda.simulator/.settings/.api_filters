@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<component id="ac.soton.coda.simulator" version="2">
+    <resource path="src/ac/soton/coda/internal/simulator/OracleHandler.java" type="ac.soton.coda.internal.simulator.OracleHandler">
+        <filter comment="package name changed from 'org.coda.simulator.animation.impl'" id="1110441988">
+            <message_arguments>
+                <message_argument value="ac.soton.coda.internal.simulator.OracleHandler"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src/ac/soton/coda/internal/simulator/ProgressDialog.java" type="ac.soton.coda.internal.simulator.ProgressDialog">
+        <filter comment="package name changed from 'org.coda.simulator.animation.impl'" id="1110441988">
+            <message_arguments>
+                <message_argument value="ac.soton.coda.internal.simulator.ProgressDialog"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src/ac/soton/coda/internal/simulator/StateResultStringParser.java" type="ac.soton.coda.internal.simulator.StateResultStringParser">
+        <filter comment="package name changed from 'org.coda.simulator.animation.impl'" id="1110441988">
+            <message_arguments>
+                <message_argument value="ac.soton.coda.internal.simulator.StateResultStringParser"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src/ac/soton/coda/internal/simulator/UpdateEnabledOpsList.java" type="ac.soton.coda.internal.simulator.UpdateEnabledOpsList">
+        <filter comment="package name changed from 'org.coda.simulator.animation.impl'" id="1110441988">
+            <message_arguments>
+                <message_argument value="ac.soton.coda.internal.simulator.UpdateEnabledOpsList"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src/ac/soton/coda/internal/simulator/UpdateStateLists.java" type="ac.soton.coda.internal.simulator.UpdateStateLists">
+        <filter comment="package name changed from 'org.coda.simulator.animation.impl'" id="1110441988">
+            <message_arguments>
+                <message_argument value="ac.soton.coda.internal.simulator.UpdateStateLists"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src/ac/soton/coda/internal/simulator/views/SimulatorView.java" type="ac.soton.coda.internal.simulator.views.SimulatorView">
+        <filter comment="package name changed from 'org.coda.simulator.ui.windowBuilder'" id="1110441988">
+            <message_arguments>
+                <message_argument value="ac.soton.coda.internal.simulator.views.SimulatorView"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src/ac/soton/coda/simulator/Activator.java" type="ac.soton.coda.simulator.Activator">
+        <filter comment="package name changed from 'org.coda.simulator.ui'" id="1110441988">
+            <message_arguments>
+                <message_argument value="ac.soton.coda.simulator.Activator"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src/ac/soton/coda/simulator/SimulatorException.java" type="ac.soton.coda.simulator.SimulatorException">
+        <filter comment="package name changed from 'org.coda.simulator.ui'" id="1110441988">
+            <message_arguments>
+                <message_argument value="ac.soton.coda.simulator.SimulatorException"/>
+            </message_arguments>
+        </filter>
+    </resource>
+</component>

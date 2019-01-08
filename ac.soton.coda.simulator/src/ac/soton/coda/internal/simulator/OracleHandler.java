@@ -9,7 +9,7 @@
  * Contributors:
  *      University of Southampton - Initial API and implementation
  *******************************************************************************/
-package org.coda.simulator.animation.impl;
+package ac.soton.coda.internal.simulator;
 
 import java.io.IOException;
 import java.util.Calendar;
@@ -19,7 +19,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.coda.simulator.ui.Activator;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -53,6 +52,7 @@ import org.eventb.emf.core.CorePackage;
 import org.eventb.emf.core.EventBNamed;
 import org.eventb.emf.core.EventBObject;
 
+import ac.soton.coda.simulator.Activator;
 import ac.soton.eventb.emf.oracle.Entry;
 import ac.soton.eventb.emf.oracle.Oracle;
 import ac.soton.eventb.emf.oracle.OracleFactory;
@@ -69,6 +69,8 @@ import de.prob.exceptions.ProBException;
 
 public class OracleHandler {
 	
+	private final static String oracleExtension = "oracle";
+	private final static String goldOracleExtension = "gold_"+oracleExtension;
 	private boolean debug = true;
 
 
@@ -462,7 +464,7 @@ public class OracleHandler {
 	
 	private Run getGoldRun() throws CoreException {
 	   FileDialog dialog = new FileDialog(shell, SWT.OPEN);
-	   dialog.setFilterExtensions(new String [] {"*.gold.oracle"});
+	   dialog.setFilterExtensions(new String [] {"*."+goldOracleExtension, "*."+oracleExtension,"*.*"});
 	   dialog.setFilterPath(oracleFolder.getRawLocation().toString());
 	   dialog.setText("Select Gold Oracle File to Replay");
 	   String rawLocation = dialog.open();
@@ -534,8 +536,8 @@ public class OracleHandler {
 		filePath = filePath.append("/"+EcoreUtil.getURI(model).trimFileExtension().lastSegment());
 		filePath = filePath.addFileExtension(name);
 		filePath = filePath.addFileExtension(timestamp);
-		if (gold) filePath = filePath.addFileExtension("gold");
-		filePath = filePath.addFileExtension("oracle");
+		if (gold) filePath = filePath.addFileExtension(goldOracleExtension);
+		else filePath = filePath.addFileExtension(oracleExtension);
 		IPath path = new Path("platform:/resource");
 		path = path.append(filePath);
 		URI uri = URI.createURI(path.toString(),true);
