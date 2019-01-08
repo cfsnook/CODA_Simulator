@@ -30,7 +30,7 @@ Require-Bundle: org.eclipse.ui;bundle-version="[3.7.0,4.0.0)",
  org.eclipse.ui.forms;bundle-version="[3.7.1,4.0.0)",
  ac.soton.eventb.emf.decomposition;bundle-version="[0.0.1,1.0.0)",
  ac.soton.coda.ui;bundle-version="[0.1.0,1.0.0)",
- ac.soton.eventb.statemachines.animation;bundle-version="[2.4.0,3.0.0)",
+ ac.soton.eventb.statemachines.animation;bundle-version="[2.5.0,3.0.0)",
  ac.soton.eventb.statemachines.diagram;bundle-version="[3.5.0,4.0.0)"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
