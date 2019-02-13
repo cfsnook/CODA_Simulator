@@ -13,11 +13,11 @@
 <feature
       id="ac.soton.coda.simulator.sdk"
       label="%featureName"
-      version="3.0.0.release"
+      version="3.0.1.release"
       provider-name="%featureVendor"
       plugin="ac.soton.coda.simulator.branding"
       license-feature="ac.soton.coda.licence"
-      license-feature-version="1.1.1.release">
+      license-feature-version="1.1.2.release">
 
    <description>
       %featureDescription
